@@ -51,6 +51,6 @@ code {
   background-color: #eee;
   padding: 2px 4px;
   border-radius: 4px;
-  color: #304455;
+  color: hsl(208, 28%, 26%);
 }
 </style>
