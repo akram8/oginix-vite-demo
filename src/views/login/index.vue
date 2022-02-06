@@ -5,7 +5,7 @@
 		</div>
 		<div class="login-content">
 			<div class="login-content-main">
-				<h4 class="login-content-title">后台模板</h4>
+				<h4 class="login-content-title">oginix-vite-demo</h4>
 				<div>
 					<el-tabs v-model="state.tabsActiveName">
 						<el-tab-pane :label="'Login'" name="account">
@@ -19,8 +19,8 @@
 			</div>
 		</div>
 		<div class="login-copyright">
-			<div class="mb5 login-copyright-company">aaa</div>
-			<div class="login-copyright-msg">bbb</div>
+			<div class="mb5 login-copyright-company">Copyright © 2022-present xxxx.xxxx Akram8</div>
+			<div class="login-copyright-msg">xxxx</div>
 		</div>
 	</div>
 </template>
@@ -41,7 +41,11 @@ const state =  reactive({
 .login-container {
 	width: 100%;
 	height: 100%;
-	background: url('https://gitee.com/lyt-top/vue-next-admin-images/raw/master/login/bg-login.png') no-repeat;
+	background: url('https://images.unsplash.com/photo-1516053256215-94022213b13c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80') no-repeat;
+	background: url('https://images.unsplash.com/photo-1488998527040-85054a85150e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
+	// background: url('https://images.unsplash.com/photo-1611783629608-1954434566ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
+	// background: url('https://images.unsplash.com/photo-1588736833957-45c001fef8a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
+	// background: #A2D2FF;
 	background-size: 100% 100%;
 	.login-logo {
 		position: absolute;

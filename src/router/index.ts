@@ -10,6 +10,10 @@ const staticRoutes = [{
   path: '/login',
   name: 'login',
   component: Login
+}, {
+  path: '/home',
+  name: 'home',
+  component: Home
 }]
 
 const router = createRouter({

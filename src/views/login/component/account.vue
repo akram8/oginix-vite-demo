@@ -52,7 +52,7 @@
 		</el-form-item>
 		<el-form-item class="login-animation-four">
 			<el-button type="primary" class="login-content-submit" round @click="onSignIn" :loading="state.loading.signIn">
-				<span>aaa</span>
+				<span>Login</span>
 			</el-button>
 		</el-form-item>
 		<el-form-item class="login-animation-five">
@@ -64,7 +64,11 @@
 
 <script setup lang="ts">
 import {reactive} from 'vue'
-function onSignIn() {}
+import {useRouter} from 'vue-router'
+const router = useRouter()
+function onSignIn() {
+	router.push({path: '/home'})
+}
 const state = reactive({
   isShowPassword: false,
   ruleForm: {
