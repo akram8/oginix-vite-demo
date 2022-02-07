@@ -1,4 +1,7 @@
 # Vue 3 + Typescript + Vite
+
+[![oginix-vite-demo](https://img.shields.io/badge/oginix_vite_demo-0.0.0-brightgreen)](https://github.com/akram8/oginix-vite-demo)
+[![vue2](https://img.shields.io/badge/vue-3.x-brightgreen.svg)](https://vuejs.org/)
 <div align="center">
   <img  style="height:300px;width: 300px;" src="https://github.com/akram8/oginix-vite-demo/blob/main/src/assets/github.jpg?raw=true" />
 </div>
