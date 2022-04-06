@@ -76,6 +76,16 @@ export default defineComponent({
     const openDialog = () => {
     //  dialogFormVisible = true;
     }
+    function getCurrentWeek () {
+      let now: any = new Date()
+      var weekFirstDay: any = new Date(now- (now.getDay() - 1) * 86400000)
+      var firstMonth = Number(weekFirstDay.getMonth()) + 1
+      var weekLastDay = new Date((weekFirstDay / 1000 + 6 * 86400) * 1000)
+      var lastMonth = Number(weekLastDay.getMonth()) + 1
+      var currentWeek = weekFirstDay.getFullYear() + '-' + firstMonth + '-' + weekFirstDay.getDate() + '~' + weekLastDay.getFullYear() + '-' + lastMonth + '-' + weekLastDay.getDate()
+      console.log('currentWeeek', currentWeek)
+    }
+    getCurrentWeek();
     return {
       form,
       formLabelWidth,
