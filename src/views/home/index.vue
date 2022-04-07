@@ -86,13 +86,8 @@ export default defineComponent({
       return year.toString() + '-' + month.toString() + '-' + day.toString();
     }
     function getCurrentWeek () {
-      const now: any = new Date('2022-04-01');
+      const now: any = new Date();
       const weekFirstDay: any = new Date(now- (now.getDay() - 1) * 86400000);
-      // const firstMonth = (Number(weekFirstDay.getMonth()) + 1) >= 10 ? (Number(weekFirstDay.getMonth()) + 1) : ('0' + (Number(weekFirstDay.getMonth()) + 1))
-      // const weekLastDay = new Date((weekFirstDay / 1000 + 6 * 86400) * 1000);
-      // const lastMonth = (Number(weekLastDay.getMonth()) + 1) >= 10 ? (Number(weekLastDay.getMonth()) + 1) : ('0' + (Number(weekLastDay.getMonth()) + 1))
-      // const currentWeek = weekFirstDay.getFullYear() + '-' + firstMonth + '-' + weekFirstDay.getDate() + '~' + weekLastDay.getFullYear() + '-' + lastMonth + '-' + weekLastDay.getDate()
-      // console.log('currentWeeek', currentWeek)
       const currentWeek: Array<string> = [];
       for (let i = 0; i < 7; i++) {
         const time = new Date((weekFirstDay / 1000 + i * 86400) * 1000);
