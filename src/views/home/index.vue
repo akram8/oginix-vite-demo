@@ -3,8 +3,10 @@
     <!-- head(week name) -->
     <el-row :gutter="20">
       <el-col :span="3">
-        <div class="grid-title bg-blank">2022-04-04</div>
-        <div class="grid-title bg-blank">周一</div>
+        <div class="grid-title bg-blank">
+          <div>2022-04-04</div>
+          <div>周一</div>
+        </div>
       </el-col>
       <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
       <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
@@ -61,6 +63,7 @@ export default defineComponent({
   setup() {
     let dialogFormVisible = ref(false);
     const formLabelWidth = '140px'
+    let currentWeek = reactive(Array);
     const form = reactive({
       name: '',
       startTime: '',
@@ -76,14 +79,26 @@ export default defineComponent({
     const openDialog = () => {
     //  dialogFormVisible = true;
     }
+    function getFormatDate (date: Date) {
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1));
+      const day = date.getDate() > 9 ? date.getDate() : ('0' + date.getDate());
+      return year.toString() + '-' + month.toString() + '-' + day.toString();
+    }
     function getCurrentWeek () {
-      let now: any = new Date()
-      var weekFirstDay: any = new Date(now- (now.getDay() - 1) * 86400000)
-      var firstMonth = Number(weekFirstDay.getMonth()) + 1
-      var weekLastDay = new Date((weekFirstDay / 1000 + 6 * 86400) * 1000)
-      var lastMonth = Number(weekLastDay.getMonth()) + 1
-      var currentWeek = weekFirstDay.getFullYear() + '-' + firstMonth + '-' + weekFirstDay.getDate() + '~' + weekLastDay.getFullYear() + '-' + lastMonth + '-' + weekLastDay.getDate()
-      console.log('currentWeeek', currentWeek)
+      const now: any = new Date('2022-04-01');
+      const weekFirstDay: any = new Date(now- (now.getDay() - 1) * 86400000);
+      // const firstMonth = (Number(weekFirstDay.getMonth()) + 1) >= 10 ? (Number(weekFirstDay.getMonth()) + 1) : ('0' + (Number(weekFirstDay.getMonth()) + 1))
+      // const weekLastDay = new Date((weekFirstDay / 1000 + 6 * 86400) * 1000);
+      // const lastMonth = (Number(weekLastDay.getMonth()) + 1) >= 10 ? (Number(weekLastDay.getMonth()) + 1) : ('0' + (Number(weekLastDay.getMonth()) + 1))
+      // const currentWeek = weekFirstDay.getFullYear() + '-' + firstMonth + '-' + weekFirstDay.getDate() + '~' + weekLastDay.getFullYear() + '-' + lastMonth + '-' + weekLastDay.getDate()
+      // console.log('currentWeeek', currentWeek)
+      const currentWeek: Array<string> = [];
+      for (let i = 0; i < 7; i++) {
+        const time = new Date((weekFirstDay / 1000 + i * 86400) * 1000);
+        currentWeek.push(getFormatDate(time));
+      }
+      console.log('currentWeek', currentWeek)
     }
     getCurrentWeek();
     return {
@@ -118,7 +133,7 @@ export default defineComponent({
 }
 .grid-title {
   border-radius: 4px;
-  min-height: 36px;
+  padding: 20px 10px 0px 10px;
   text-align: center;
 }
 .grid-content {
