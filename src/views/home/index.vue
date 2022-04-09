@@ -63,7 +63,7 @@ export default defineComponent({
   setup() {
     let dialogFormVisible = ref(false);
     const formLabelWidth = '140px'
-    let currentWeek = reactive(Array);
+    let currentWeek: Array<string> = [];
     const form = reactive({
       name: '',
       startTime: '',
@@ -88,7 +88,7 @@ export default defineComponent({
     function getCurrentWeek () {
       const now: any = new Date();
       const weekFirstDay: any = new Date(now- (now.getDay() - 1) * 86400000);
-      const currentWeek: Array<string> = [];
+      // const currentWeek: Array<string> = [];
       for (let i = 0; i < 7; i++) {
         const time = new Date((weekFirstDay / 1000 + i * 86400) * 1000);
         currentWeek.push(getFormatDate(time));
