@@ -66,7 +66,7 @@ export default defineComponent({
   setup() {
     let dialogFormVisible = ref(false);
     const formLabelWidth = '140px'
-    let currentWeek: Array<string> = [];
+    let currentWeek: Array<string> = reactive([]);
     const form = reactive({
       name: '',
       startTime: '',
