@@ -2,28 +2,31 @@
   <div>
     <!-- head(week name) -->
     <el-row :gutter="20">
-      <el-col :span="3">
+      <el-col :span="3" v-for="i in currentWeek" :key="i">
         <div class="grid-title bg-blank">
-          <div>2022-04-04</div>
-          <div>周一</div>
+          <div>{{i}}</div>
+          <!-- <div>2022-04-04</div> -->
+          <!-- <div>周一</div> -->
         </div>
       </el-col>
+      <!-- <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
       <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
       <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
       <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
       <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
-      <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
-      <el-col :span="3"><div class="grid-title bg-blank"></div></el-col>
+      <el-col :span="3"><div class="grid-title bg-blank"></div></el-col> -->
     </el-row>
     <!-- aaa -->
     <el-row :gutter="20">
-      <el-col :span="3"><div class="grid-content bg-purple" @click="dialogFormVisible = true"></div></el-col>
+      <el-col :span="3" v-for="i in currentWeek" :key="i">
+        <div class="grid-content bg-purple" @click="dialogFormVisible = true"></div>
+      </el-col>
+      <!-- <el-col :span="3"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple"></div></el-col> -->
     </el-row>
     <!-- dialog -->
     <el-dialog v-model="dialogFormVisible" title="添加工时">
@@ -98,6 +101,7 @@ export default defineComponent({
     getCurrentWeek();
     return {
       form,
+      currentWeek,
       formLabelWidth,
       dialogFormVisible,
       openDialog
