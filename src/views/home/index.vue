@@ -60,13 +60,13 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref, reactive, onMounted } from 'vue'
 
 export default defineComponent({
   setup() {
     let dialogFormVisible = ref(false);
     const formLabelWidth = '140px'
-    let currentWeek: Array<string> = reactive([]);
+    const currentWeek: Array<string> = reactive([]);
     const form = reactive({
       name: '',
       startTime: '',
@@ -98,7 +98,9 @@ export default defineComponent({
       }
       console.log('currentWeek', currentWeek)
     }
-    getCurrentWeek();
+    onMounted(() => {
+      getCurrentWeek();
+    })
     return {
       form,
       currentWeek,
