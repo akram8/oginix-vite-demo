@@ -35,3 +35,6 @@ jobs:
           # GITHUB_TOKEN: ${{ secrets.All }}
           BRANCH: gh-pages
           FOLDER: dist
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
