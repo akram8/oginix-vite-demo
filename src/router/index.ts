@@ -7,14 +7,15 @@ const staticRoutes = [{
   name: '/',
   component: Home,
   redirect: '/login',
+  children: [{
+    path: '/home',
+    name: 'home',
+    component: Home
+  }]
 }, {
   path: '/login',
   name: 'login',
   component: Login
-}, {
-  path: '/home',
-  name: 'home',
-  component: Home
 }]
 
 const router = createRouter({

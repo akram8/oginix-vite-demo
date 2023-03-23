@@ -46,8 +46,7 @@ export default defineConfig((mode: ConfigEnv) => {
 					assetFileNames: `assets/[name].[hash].[ext]`,
 					compact: true,
 					manualChunks: {
-						vue: ['vue', 'vue-router', 'pinia'],
-						echarts: ['echarts'],
+						vue: ['vue', 'vue-router', 'pinia']
 					},
 				},
 			},
