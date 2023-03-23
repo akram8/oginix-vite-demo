@@ -96,7 +96,7 @@ export default defineComponent({
         const time = new Date((weekFirstDay / 1000 + i * 86400) * 1000);
         currentWeek.push(getFormatDate(time));
       }
-      console.log('currentWeek', currentWeek)
+      console.log('currentWeek: ', currentWeek)
     }
     onMounted(() => {
       getCurrentWeek();
