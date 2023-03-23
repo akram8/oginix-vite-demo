@@ -1,39 +1,35 @@
-# # 以下以一个构建vue项目的yml文件为例子
-# name: CI
- 
-# on:
-#     push:
-#         branches:
-#             - main # 这里只配置了main分支，所以只有推送main分支才会触发以下任务
-# jobs:
-#     build-and-deploy:
-#         runs-on: ubuntu-latest
-#         steps:
-#             - uses: actions/checkout@v3
-#             - name: Use Node.js
-#               uses: actions/setup-node@v3
-#               with:
-#                   node-version: "18.x"
-#             - run: node -v
-#             - run: npm install
-#             - run: npm run build
-#             - name: Deploy # 部署
-#               uses: JamesIves/github-pages-deploy-action@v4.3.3
-#               with:
-#                   branch: gh-pages # 部署后提交到那个分支
-#                   folder: dist # 这里填打包好的目录名称
+name: Build And Deploy oginix-vite-demo
 
-name: Build Vue
-on: [push]
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  build_vue:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    name: Build Vue
     steps:
-    - uses: actions/checkout@v2
-    - id: Build-Vue
-      uses: xRealNeon/VuePagesAction@1.0.1
-      with:
-        username: 'akram8'
-        reponame: 'oginix-vite-demo'
-        token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js 16.13.0
+        uses: actions/setup-node@master
+        with:
+          node-version: "16.13.0"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Build
+        run: pnpm install && pnpm build:prod
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.V3_ADMIN_VITE }}
+          BRANCH: gh-pages
+          FOLDER: dist
