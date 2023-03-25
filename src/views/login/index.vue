@@ -3,7 +3,12 @@
 		<div class="login-logo">
 			<!-- <span>{{ getThemeConfig.globalViceTitle }}</span> -->
 		</div>
+		<!-- #765c5c， #f89898 -->
+		<div style="float: left;">
+				<img src="../../assets/login/bg.svg" />
+			</div>
 		<div class="login-content">
+			
 			<div class="login-content-main">
 				<h4 class="login-content-title">oginix-vite-demo</h4>
 				<div>
@@ -41,8 +46,10 @@ const state =  reactive({
 .login-container {
 	width: 100%;
 	height: 100%;
-	background: url('https://images.unsplash.com/photo-1516053256215-94022213b13c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80') no-repeat;
-	background: url('https://images.unsplash.com/photo-1488998527040-85054a85150e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
+	background: #f89898;
+	// background: url(../../assets/login/bg.svg)  no-repeat;
+	// background: url('https://images.unsplash.com/photo-1516053256215-94022213b13c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80') no-repeat;
+	// background: url('https://images.unsplash.com/photo-1488998527040-85054a85150e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
 	// background: url('https://images.unsplash.com/photo-1611783629608-1954434566ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
 	// background: url('https://images.unsplash.com/photo-1588736833957-45c001fef8a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
 	// background: #A2D2FF;
