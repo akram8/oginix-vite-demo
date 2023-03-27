@@ -1,173 +1,253 @@
 <template>
-	<div class="login-container">
-		<div class="login-logo">
-			<!-- <span>{{ getThemeConfig.globalViceTitle }}</span> -->
-		</div>
-		<!-- #765c5c， #f89898 -->
-		<div class="content-main">
-			<!-- left img -->
-			<div class="login-content-left">
-				<img src="../../assets/login/bg.svg" />
+	<div class="login-container flex">
+		<div class="login-left">
+			<div class="login-left-logo">
+				<img :src="logoMini" />
+				<div class="login-left-logo-text">
+					<span>{{ getThemeConfig.globalViceTitle }}</span>
+					<span class="login-left-logo-text-msg">{{ getThemeConfig.globalViceTitleMsg }}</span>
+				</div>
 			</div>
-			<!-- right account -->
-			<div class="login-content">
-				<div>
-					<h4 class="login-content-title">oginix-vite-demo</h4>
-					<div>
-						<el-tabs v-model="state.tabsActiveName">
-							<el-tab-pane :label="'Login'" name="account">
-								<Account />
-							</el-tab-pane>
-							<!-- <el-tab-pane :label="$t('message.label.two2')" name="mobile">
-								<Mobile />
-							</el-tab-pane> -->
-						</el-tabs>
+			<div class="login-left-img">
+				<img :src="loginMain" />
+			</div>
+			<img :src="loginBg" class="login-left-waves" />
+		</div>
+		<div class="login-right flex">
+			<div class="login-right-warp flex-margin">
+				<span class="login-right-warp-one"></span>
+				<span class="login-right-warp-two"></span>
+				<div class="login-right-warp-mian">
+					<div class="login-right-warp-main-title">{{ getThemeConfig.globalTitle }} 欢迎您！</div>
+					<div class="login-right-warp-main-form">
+						<div v-if="!state.isScan">
+							<el-tabs v-model="state.tabsActiveName">
+								<el-tab-pane :label="$t('message.label.one1')" name="account">
+									<Account />
+								</el-tab-pane>
+								<el-tab-pane :label="$t('message.label.two2')" name="mobile">
+									<Mobile />
+								</el-tab-pane>
+							</el-tabs>
+						</div>
+						<Scan v-if="state.isScan" />
+						<div class="login-content-main-sacn" @click="state.isScan = !state.isScan">
+							<i class="iconfont" :class="state.isScan ? 'icon-diannao1' : 'icon-barcode-qr'"></i>
+							<div class="login-content-main-sacn-delta"></div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
-		<div class="login-copyright">
-			<div class="mb5 login-copyright-company">Copyright © 2022-present xxxx.xxxx Akram8</div>
-			<div class="login-copyright-msg">xxxx</div>
-		</div>
 	</div>
 </template>
 
-<script setup lang="ts">
-import { toRefs, reactive, computed } from 'vue';
-import Account from './component/account.vue';
+<script setup lang="ts" name="loginIndex">
+import { defineAsyncComponent, onMounted, reactive, computed } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useThemeConfig } from '/@/stores/themeConfig';
+import { NextLoading } from '/@/utils/loading';
+import logoMini from '/@/assets/logo-mini.svg';
+import loginMain from '/@/assets/login-main.svg';
+import loginBg from '/@/assets/login-bg.svg';
 
-const state =  reactive({
-  tabsActiveName: 'account',
-  isTabPaneShow: true,
-  isScan: false,
-})
+// 引入组件
+const Account = defineAsyncComponent(() => import('/@/views/login/component/account.vue'));
+const Mobile = defineAsyncComponent(() => import('/@/views/login/component/mobile.vue'));
+const Scan = defineAsyncComponent(() => import('/@/views/login/component/scan.vue'));
+
+// 定义变量内容
+const storesThemeConfig = useThemeConfig();
+const { themeConfig } = storeToRefs(storesThemeConfig);
+const state = reactive({
+	tabsActiveName: 'account',
+	isScan: false,
+});
+
+// 获取布局配置信息
+const getThemeConfig = computed(() => {
+	return themeConfig.value;
+});
+// 页面加载时
+onMounted(() => {
+	NextLoading.done();
+});
 </script>
-
 
 <style scoped lang="scss">
 .login-container {
-	width: 100%;
 	height: 100%;
-	// background: #f89898;
-	background: url(../../assets/login/login-bg.jpg) no-repeat;
-	// background: #A2D2FF;
-	background-size: 100% 100%;
-	
-	.login-logo {
-		position: absolute;
-		top: 30px;
-		left: 50%;
-		height: 50px;
-		display: flex;
-		align-items: center;
-		font-size: 20px;
-		color: var(--color-primary);
-		letter-spacing: 2px;
-		width: 90%;
-		transform: translateX(-50%);
-	}
-	.content-main {
-		display: flex;
-    flex-direction: row;
-    width: 100%;
-    flex-wrap: wrap;
-    align-content: center;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) translate3d(0, 0, 0);
-	}
-	.login-content {
-		width: 500px;
-		padding: 20px;
-		// position: absolute;
-		// top: 50%;
-		// left: 50%;
-		// transform: translate(-50%, -50%) translate3d(0, 0, 0);
-		// background-color: rgba(255, 255, 255, 0.99);
-		// border: 5px solid var(--color-primary-light-8);
-		border-radius: 4px;
-		transition: all 0.3s ease;
-		overflow: hidden;
-		z-index: 1;
-		.login-content-main {
-			margin: 0 auto;
-			width: 80%;
-			.login-content-title {
-				color: #333;
-				font-weight: 500;
-				font-size: 22px;
-				text-align: center;
-				letter-spacing: 4px;
-				margin: 15px 0 30px;
-				white-space: nowrap;
-				z-index: 5;
-				position: relative;
-				transition: all 0.3s ease;
+	background: var(--el-color-white);
+	.login-left {
+		flex: 1;
+		position: relative;
+		background-color: rgba(211, 239, 255, 1);
+		margin-right: 100px;
+		.login-left-logo {
+			display: flex;
+			align-items: center;
+			position: absolute;
+			top: 50px;
+			left: 80px;
+			z-index: 1;
+			animation: logoAnimation 0.3s ease;
+			img {
+				width: 52px;
+				height: 52px;
+			}
+			.login-left-logo-text {
+				display: flex;
+				flex-direction: column;
+				span {
+					margin-left: 10px;
+					font-size: 28px;
+					color: #26a59a;
+				}
+				.login-left-logo-text-msg {
+					font-size: 12px;
+					color: #32a99e;
+				}
 			}
 		}
-		.login-content-main-sacn {
+		.login-left-img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			height: 52%;
+			img {
+				width: 100%;
+				height: 100%;
+				animation: error-num 0.6s ease;
+			}
+		}
+		.login-left-waves {
 			position: absolute;
 			top: 0;
-			right: 0;
-			width: 50px;
-			height: 50px;
+			right: -100px;
+		}
+	}
+	.login-right {
+		width: 700px;
+		.login-right-warp {
+			border: 1px solid var(--el-color-primary-light-3);
+			border-radius: 3px;
+			width: 500px;
+			height: 500px;
+			position: relative;
 			overflow: hidden;
-			cursor: pointer;
-			transition: all ease 0.3s;
-			&-delta {
+			background-color: var(--el-color-white);
+			.login-right-warp-one,
+			.login-right-warp-two {
 				position: absolute;
-				width: 35px;
-				height: 70px;
-				z-index: 2;
-				top: 2px;
-				right: 21px;
-				background: var(--el-color-white);
-				transform: rotate(-45deg);
+				display: block;
+				width: inherit;
+				height: inherit;
+				&::before,
+				&::after {
+					content: '';
+					position: absolute;
+					z-index: 1;
+				}
 			}
-			&:hover {
-				opacity: 1;
-				transition: all ease 0.3s;
-				color: var(--color-primary);
+			.login-right-warp-one {
+				&::before {
+					filter: hue-rotate(0deg);
+					top: 0px;
+					left: 0;
+					width: 100%;
+					height: 3px;
+					background: linear-gradient(90deg, transparent, var(--el-color-primary));
+					animation: loginLeft 3s linear infinite;
+				}
+				&::after {
+					filter: hue-rotate(60deg);
+					top: -100%;
+					right: 2px;
+					width: 3px;
+					height: 100%;
+					background: linear-gradient(180deg, transparent, var(--el-color-primary));
+					animation: loginTop 3s linear infinite;
+					animation-delay: 0.7s;
+				}
 			}
-			i {
-				width: 47px;
-				height: 50px;
-				display: inline-block;
-				font-size: 48px;
-				position: absolute;
-				right: 2px;
-				top: -1px;
+			.login-right-warp-two {
+				&::before {
+					filter: hue-rotate(120deg);
+					bottom: 2px;
+					right: -100%;
+					width: 100%;
+					height: 3px;
+					background: linear-gradient(270deg, transparent, var(--el-color-primary));
+					animation: loginRight 3s linear infinite;
+					animation-delay: 1.4s;
+				}
+				&::after {
+					filter: hue-rotate(300deg);
+					bottom: -100%;
+					left: 0px;
+					width: 3px;
+					height: 100%;
+					background: linear-gradient(360deg, transparent, var(--el-color-primary));
+					animation: loginBottom 3s linear infinite;
+					animation-delay: 2.1s;
+				}
 			}
-		}
-	}
-	.login-content-left {
-		// position: absolute;
-		// top: 0;
-		// right: 0;
-		// width: 50px;
-		// height: 50px;
-		// overflow: hidden;
-		// cursor: pointer;
-		// transition: all ease 0.3s;
-	}
-	.login-copyright {
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-		bottom: 30px;
-		text-align: center;
-		color: var(--color-whites);
-		font-size: 12px;
-		opacity: 0.8;
-		.login-copyright-company {
-			white-space: nowrap;
-		}
-		.login-copyright-msg {
-			@extend .login-copyright-company;
+			.login-right-warp-mian {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				.login-right-warp-main-title {
+					height: 130px;
+					line-height: 130px;
+					font-size: 27px;
+					text-align: center;
+					letter-spacing: 3px;
+					animation: logoAnimation 0.3s ease;
+					animation-delay: 0.3s;
+					color: var(--el-text-color-primary);
+				}
+				.login-right-warp-main-form {
+					flex: 1;
+					padding: 0 50px 50px;
+					.login-content-main-sacn {
+						position: absolute;
+						top: 0;
+						right: 0;
+						width: 50px;
+						height: 50px;
+						overflow: hidden;
+						cursor: pointer;
+						transition: all ease 0.3s;
+						color: var(--el-color-primary);
+						&-delta {
+							position: absolute;
+							width: 35px;
+							height: 70px;
+							z-index: 2;
+							top: 2px;
+							right: 21px;
+							background: var(--el-color-white);
+							transform: rotate(-45deg);
+						}
+						&:hover {
+							opacity: 1;
+							transition: all ease 0.3s;
+							color: var(--el-color-primary) !important;
+						}
+						i {
+							width: 47px;
+							height: 50px;
+							display: inline-block;
+							font-size: 48px;
+							position: absolute;
+							right: 1px;
+							top: 0px;
+						}
+					}
+				}
+			}
 		}
 	}
 }
