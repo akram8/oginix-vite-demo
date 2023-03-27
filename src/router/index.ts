@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/home/index.vue'
 import Login from '../views/login/index.vue'
 
@@ -19,7 +19,7 @@ const staticRoutes = [{
 }]
 
 const router = createRouter({
-  history: createWebHistory(), // createWebHashHistory 方法路由包含(#)号，createWebHistory 方法不包含（#）号 
+  history: createWebHashHistory(), // createWebHashHistory 方法路由包含(#)号，createWebHistory 方法不包含（#）号 
 	routes: staticRoutes,
 })
 

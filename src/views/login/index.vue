@@ -4,25 +4,30 @@
 			<!-- <span>{{ getThemeConfig.globalViceTitle }}</span> -->
 		</div>
 		<!-- #765c5c， #f89898 -->
-		<div style="float: left;">
+		<div class="content-main">
+			<!-- left img -->
+			<div class="login-content-left">
 				<img src="../../assets/login/bg.svg" />
 			</div>
-		<div class="login-content">
-			
-			<div class="login-content-main">
-				<h4 class="login-content-title">oginix-vite-demo</h4>
+			<!-- right account -->
+			<div class="login-content">
 				<div>
-					<el-tabs v-model="state.tabsActiveName">
-						<el-tab-pane :label="'Login'" name="account">
-							<Account />
-						</el-tab-pane>
-						<!-- <el-tab-pane :label="$t('message.label.two2')" name="mobile">
-							<Mobile />
-						</el-tab-pane> -->
-					</el-tabs>
+					<h4 class="login-content-title">oginix-vite-demo</h4>
+					<div>
+						<el-tabs v-model="state.tabsActiveName">
+							<el-tab-pane :label="'Login'" name="account">
+								<Account />
+							</el-tab-pane>
+							<!-- <el-tab-pane :label="$t('message.label.two2')" name="mobile">
+								<Mobile />
+							</el-tab-pane> -->
+						</el-tabs>
+					</div>
 				</div>
 			</div>
 		</div>
+		
+		
 		<div class="login-copyright">
 			<div class="mb5 login-copyright-company">Copyright © 2022-present xxxx.xxxx Akram8</div>
 			<div class="login-copyright-msg">xxxx</div>
@@ -46,14 +51,11 @@ const state =  reactive({
 .login-container {
 	width: 100%;
 	height: 100%;
-	background: #f89898;
-	// background: url(../../assets/login/bg.svg)  no-repeat;
-	// background: url('https://images.unsplash.com/photo-1516053256215-94022213b13c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80') no-repeat;
-	// background: url('https://images.unsplash.com/photo-1488998527040-85054a85150e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
-	// background: url('https://images.unsplash.com/photo-1611783629608-1954434566ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
-	// background: url('https://images.unsplash.com/photo-1588736833957-45c001fef8a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat;
+	// background: #f89898;
+	background: url(../../assets/login/login-bg.jpg) no-repeat;
 	// background: #A2D2FF;
 	background-size: 100% 100%;
+	
 	.login-logo {
 		position: absolute;
 		top: 30px;
@@ -67,15 +69,26 @@ const state =  reactive({
 		width: 90%;
 		transform: translateX(-50%);
 	}
-	.login-content {
-		width: 500px;
-		padding: 20px;
+	.content-main {
+		display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    align-content: center;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%) translate3d(0, 0, 0);
-		background-color: rgba(255, 255, 255, 0.99);
-		border: 5px solid var(--color-primary-light-8);
+	}
+	.login-content {
+		width: 500px;
+		padding: 20px;
+		// position: absolute;
+		// top: 50%;
+		// left: 50%;
+		// transform: translate(-50%, -50%) translate3d(0, 0, 0);
+		// background-color: rgba(255, 255, 255, 0.99);
+		// border: 5px solid var(--color-primary-light-8);
 		border-radius: 4px;
 		transition: all 0.3s ease;
 		overflow: hidden;
@@ -130,6 +143,16 @@ const state =  reactive({
 				top: -1px;
 			}
 		}
+	}
+	.login-content-left {
+		// position: absolute;
+		// top: 0;
+		// right: 0;
+		// width: 50px;
+		// height: 50px;
+		// overflow: hidden;
+		// cursor: pointer;
+		// transition: all ease 0.3s;
 	}
 	.login-copyright {
 		position: absolute;
