@@ -1,1 +1,0 @@
-import{d as a,e as s,f as t,g as e}from"./index-f97ca1e0.js";const o={class:"layout-padding"},i=e("div",{class:"layout-padding-auto layout-padding-view"},[e("div",{class:"w100 h100 flex"},[e("div",{class:"flex-margin color-primary"},"测试界面")])],-1),n=[i],c=a({name:"pagesFilteringDetails1"}),p=a({...c,setup(d){return(l,_)=>(s(),t("div",o,n))}});export{p as default};
