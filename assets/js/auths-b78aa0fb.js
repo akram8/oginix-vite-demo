@@ -1,0 +1,1 @@
+import{d as s,$ as l,s as p,y as c,B as m,a8 as d,G as _}from"./index-f97ca1e0.js";const i=s({name:"auths"}),y=s({...i,props:{value:{type:Array,default:()=>[]}},setup(a){const r=a,o=l(),{userInfos:n}=p(o),u=c(()=>{let e=!1;return n.value.authBtnList.map(t=>{r.value.map(f=>{t===f&&(e=!0)})}),e});return(e,t)=>m(u)?d(e.$slots,"default",{key:0}):_("",!0)}});export{y as default};
