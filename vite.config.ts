@@ -43,15 +43,18 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
 			outDir: 'dist',
 			chunkSizeWarningLimit: 1500,
 			rollupOptions: {
+				input: {
+					index: pathResolve("index.html")
+				},
 				output: {
 					chunkFileNames: 'assets/js/[name]-[hash].js',
 					entryFileNames: 'assets/js/[name]-[hash].js',
 					assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-					// manualChunks(id) {
-					// 	if (id.includes('node_modules')) {
-					// 		return id.toString().split('node_modules/')[1].split('/')[0].toString();
-					// 	}
-					// },
+					manualChunks(id) {
+						if (id.includes('node_modules')) {
+							return id.toString().split('node_modules/')[1].split('/')[0].toString();
+						}
+					},
 				},
 				external: JSON.parse(env.VITE_OPEN_CDN) ? buildConfig.external : [],
 			},
