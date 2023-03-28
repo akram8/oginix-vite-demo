@@ -59,7 +59,7 @@ const state = reactive({
 		'🎉🎉🔥基于vue3.x 、Typescript、vite、Element plus等',
 		'适配手机、平板、pc的后台开源免费模板库（vue2.x请切换vue-prev-admin分支）',
 		'仓库地址：https://github.com/akram8/oginix-vite-demo',
-		'演示地址：https://lyt-top.gitee.io/oginix-vite-demo-preview/#/login',
+		'演示地址：https://akram8.github.io/oginix-vite-demo/#/login',
 	],
 	tableData: [
 		{

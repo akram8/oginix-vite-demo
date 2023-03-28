@@ -32,7 +32,7 @@ const qrcodeRef = ref();
 // 初始化生成二维码
 const initQrcode = () => {
 	new QRCode(qrcodeRef.value, {
-		text: `https://lyt-top.gitee.io/oginix-vite-demo-preview/#/login?t=${new Date().getTime()}`,
+		text: `https://akram8.github.io/oginix-vite-demo/#/login?t=${new Date().getTime()}`,
 		width: 125,
 		height: 125,
 		colorDark: '#000000',
