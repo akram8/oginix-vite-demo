@@ -123,7 +123,7 @@ export default {
 	},
 	noAccess: {
 		accessTitle: 'You are not authorized to operate~',
-		accessMsg: 'Contact information: add QQ group discussion 665452019',
+		accessMsg: 'Contact information: XXXXXXX',
 		accessBtn: 'Reauthorization',
 	},
 	layout: {

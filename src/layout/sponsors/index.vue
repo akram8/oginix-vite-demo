@@ -14,7 +14,7 @@
 
 <script setup lang="ts" name="layoutSponsors">
 import { reactive, computed, onMounted } from 'vue';
-import sponsorsOne from '/@/assets/ccflowRightNextAdmin.png';
+import sponsorsOne from '/@/assets/logo-mini.svg';
 
 // 定义变量内容
 const state = reactive({
@@ -22,8 +22,8 @@ const state = reactive({
 		list: [
 			{
 				url: sponsorsOne,
-				text: `驰骋BPM系统包含表单引擎+流程引擎+权限控制,方便集成,配置灵活,功能强大,适合中国国情的工作流引擎.演示:http://demo.ccflow.org。右上角点star方可加群: 1060674395`,
-				link: 'http://www.ccflow.org/',
+				text: `Hi~`,
+				link: 'https://github.com/akram8/oginix-vite-demo',
 			},
 		],
 		isShow: false,
