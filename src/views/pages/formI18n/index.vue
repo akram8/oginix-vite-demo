@@ -6,6 +6,7 @@
 					<el-radio-button label="zh-cn">中文简体</el-radio-button>
 					<el-radio-button label="en">英文</el-radio-button>
 					<el-radio-button label="zh-tw">中文繁体</el-radio-button>
+					<el-radio-button label="ug-cn">ئۇيغۇرچە</el-radio-button>
 				</el-radio-group>
 			</div>
 			<el-form :model="state.form" size="default" label-width="100px" class="mt35 mb35">

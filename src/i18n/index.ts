@@ -17,11 +17,12 @@ import { useThemeConfig } from '/@/stores/themeConfig';
 import enLocale from 'element-plus/lib/locale/lang/en';
 import zhcnLocale from 'element-plus/lib/locale/lang/zh-cn';
 import zhtwLocale from 'element-plus/lib/locale/lang/zh-tw';
+import ugcnLocal from 'element-plus/lib/locale/lang/ug-cn';
 
 // 定义变量内容
 const messages = {};
-const element = { en: enLocale, 'zh-cn': zhcnLocale, 'zh-tw': zhtwLocale };
-const itemize = { en: [], 'zh-cn': [], 'zh-tw': [] };
+const element = { en: enLocale, 'zh-cn': zhcnLocale, 'zh-tw': zhtwLocale, 'ug-cn': ugcnLocal };
+const itemize = { en: [], 'zh-cn': [], 'zh-tw': [], 'ug-cn': [] };
 const modules: Record<string, any> = import.meta.glob('./**/*.ts', { eager: true });
 
 // 对自动引入的 modules 进行分类 en、zh-cn、zh-tw

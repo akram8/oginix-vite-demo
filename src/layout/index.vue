@@ -15,6 +15,7 @@ const layouts: any = {
 	classic: defineAsyncComponent(() => import('/@/layout/main/classic.vue')),
 	transverse: defineAsyncComponent(() => import('/@/layout/main/transverse.vue')),
 	columns: defineAsyncComponent(() => import('/@/layout/main/columns.vue')),
+	rDefaults: defineAsyncComponent(() => import('/@/layout/main/rightMain/defaults.vue')),
 };
 
 // 定义变量内容

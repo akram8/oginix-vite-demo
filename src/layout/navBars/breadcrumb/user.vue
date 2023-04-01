@@ -25,6 +25,7 @@
 					<el-dropdown-item command="zh-cn" :disabled="state.disabledI18n === 'zh-cn'">简体中文</el-dropdown-item>
 					<el-dropdown-item command="en" :disabled="state.disabledI18n === 'en'">English</el-dropdown-item>
 					<el-dropdown-item command="zh-tw" :disabled="state.disabledI18n === 'zh-tw'">繁體中文</el-dropdown-item>
+					<el-dropdown-item command="ug-cn" :disabled="state.disabledI18n === 'ug-cn'">ئۇيغۇرچە</el-dropdown-item>
 				</el-dropdown-menu>
 			</template>
 		</el-dropdown>
