@@ -23,6 +23,16 @@
 	--next-color-seting-aside: #d3dce6;
 	--next-color-seting-header: #b3c0d1;
 	--next-font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+	@font-face {
+		// https://www.onlinewebfonts.com/download/ca5d7c89a2f6c1eb8b9bdabca06339b7
+		font-family: "ALKATIP Tor";
+		src: url("../assets/font/ALKATIPTor.eot");
+		src: url("../assets/font/ALKATIPTor.eot?#iefix") format("embedded-opentype"), 
+		url("../assets/font/ALKATIPTor.woff2") format("woff2"), 
+		url("../assets/font/ALKATIPTor.woff") format("woff"), 
+		url("../assets/font/ALKATIPTor.ttf") format("truetype"), 
+		url("../assets/font/ALKATIPTor.svg#ALKATIP Tor") format("svg"); 
+	}
 }
 
 html,
