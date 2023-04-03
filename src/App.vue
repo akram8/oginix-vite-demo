@@ -55,8 +55,17 @@ const getVersion = computed(() => {
 const getGlobalComponentSize = computed(() => {
 	return other.globalComponentSize();
 });
+// 语言切换需要更改字体和布局方式
+const setGlobalFontAndContiner = () => {
+	if (locale.value === 'ug-cn') { // 如果是Uyghur语言，则测替换全局字体样式
+		document.documentElement.style.setProperty(`--next-font-family`, 'ALKATIP Basma');
+	} else {
+		document.documentElement.style.setProperty(`--next-font-family`, 'Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif');
+	}
+}
 // 获取全局 i18n
 const getGlobalI18n = computed(() => {
+	setGlobalFontAndContiner();
 	return messages.value[locale.value];
 });
 // 设置初始化，防止刷新时恢复默认
