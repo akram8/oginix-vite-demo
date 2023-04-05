@@ -62,7 +62,7 @@ const getThemeConfig = computed(() => {
 // 语言切换需要更改字体和布局方式
 const setGlobalFontAndContiner = () => {
 	if (locale.value === 'ug-cn') { // 如果是Uyghur语言，则测替换全局字体样式
-		document.documentElement.style.setProperty(`--next-font-family`, 'ALKATIP UI, SimSun, pingfang SC');
+		document.documentElement.style.setProperty(`--next-font-family`, 'ALKATIP Tor, SimSun, pingfang SC');
 
 		// 布局切换
 		Local.set('oldLayout', 'rDefaults');
