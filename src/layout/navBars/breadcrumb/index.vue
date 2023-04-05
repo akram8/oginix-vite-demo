@@ -1,5 +1,5 @@
 <template>
-	<div class="layout-navbars-breadcrumb-index">
+	<div :class="isUyghur ? 'layout-navbars-breadcrumb-index is-uyghur' : 'layout-navbars-breadcrumb-index'">
 		<Logo v-if="setIsShowLogo" />
 		<Breadcrumb />
 		<Horizontal :menuList="state.menuList" v-if="isLayoutTransverse" />
@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts" name="layoutBreadcrumbIndex">
-import { defineAsyncComponent, computed, reactive, onMounted, onUnmounted } from 'vue';
+import { defineAsyncComponent, computed, reactive, onMounted, onUnmounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useRoutesList } from '/@/stores/routesList';
@@ -27,6 +27,7 @@ const storesThemeConfig = useThemeConfig();
 const { themeConfig } = storeToRefs(storesThemeConfig);
 const { routesList } = storeToRefs(stores);
 const route = useRoute();
+const isUyghur = ref(false);
 const state = reactive({
 	menuList: [] as RouteItems,
 });
@@ -85,6 +86,7 @@ const setSendClassicChildren = (path: string) => {
 };
 // 页面加载时
 onMounted(() => {
+	isUyghur.value = themeConfig.value.globalI18n === 'ug-cn';
 	setFilterRoutes();
 	mittBus.on('getBreadcrumbIndexSetFilterRoutes', () => {
 		setFilterRoutes();
@@ -103,5 +105,9 @@ onUnmounted(() => {
 	align-items: center;
 	background: var(--next-bg-topBar);
 	border-bottom: 1px solid var(--next-border-color-light);
+}
+.is-uyghur {
+	display: flex;
+	flex-direction: row-reverse;
 }
 </style>

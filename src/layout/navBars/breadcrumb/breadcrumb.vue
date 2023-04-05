@@ -1,5 +1,5 @@
 <template>
-	<div v-if="isShowBreadcrumb" class="layout-navbars-breadcrumb">
+	<div v-if="isShowBreadcrumb" class="layout-navbars-breadcrumb" :class="(isUyghur ? 'is-uyghur': '')">
 		<SvgIcon
 			class="layout-navbars-breadcrumb-icon"
 			:name="themeConfig.isCollapse ? 'ele-Expand' : 'ele-Fold'"
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts" name="layoutBreadcrumb">
-import { reactive, computed, onMounted } from 'vue';
+import { reactive, computed, onMounted, ref } from 'vue';
 import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router';
 import { Local } from '/@/utils/storage';
 import other from '/@/utils/other';
@@ -39,6 +39,7 @@ const { themeConfig } = storeToRefs(storesThemeConfig);
 const { routesList } = storeToRefs(stores);
 const route = useRoute();
 const router = useRouter();
+const isUyghur = ref(false);
 const state = reactive<BreadcrumbState>({
 	breadcrumbList: [],
 	routeSplit: [],
@@ -97,6 +98,7 @@ const initRouteSplit = (path: string) => {
 };
 // 页面加载时
 onMounted(() => {
+	isUyghur.value = themeConfig.value.globalI18n === 'ug-cn';
 	initRouteSplit(route.path);
 });
 // 路由更新时
@@ -142,5 +144,9 @@ onBeforeRouteUpdate((to) => {
 			color: var(--el-color-primary) !important;
 		}
 	}
+}
+.is-uyghur {
+	display: flex;
+	flex-direction: row-reverse;
 }
 </style>

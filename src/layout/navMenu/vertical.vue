@@ -6,6 +6,7 @@
 		:collapse="state.isCollapse"
 		:unique-opened="getThemeConfig.isUniqueOpened"
 		:collapse-transition="false"
+		:class="getThemeConfig.globalI18n === 'ug-cn' ? 'is-uyghur' : ''"
 	>
 		<template v-for="val in menuLists">
 			<el-sub-menu :index="val.path" v-if="val.children && val.children.length > 0" :key="val.path">
@@ -100,3 +101,37 @@ watch(
 	}
 );
 </script>
+
+<style lang="scss" scoped>
+:deep(.el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item, .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item-group__title, .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-sub-menu__title) {
+	padding-right: calc(var(--el-menu-base-level-padding) + var(--el-menu-level) * var(--el-menu-level-padding));
+}
+.is-uyghur {
+	:deep(.el-menu-item) {
+		flex-direction: row-reverse;
+	}
+	:deep(.el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item, .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item-group__title, .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-sub-menu__title) {
+		padding-right: calc(var(--el-menu-base-level-padding) + var(--el-menu-level) * var(--el-menu-level-padding));
+	}
+	:deep(.el-sub-menu__title) {
+		flex-direction: row-reverse;
+		padding: 0 var(--el-menu-base-level-padding);
+		padding-left: calc(var(--el-menu-base-level-padding) + var(--el-menu-icon-width));
+	}
+	:deep(a) {
+		text-align: right;
+	}
+	:deep(.el-sub-menu .el-icon) {
+		margin-right: 0px;
+		margin-left: 5px;
+	}
+	:deep(.iconfont) {
+		margin-right: 0px;
+		margin-left: 5px;
+	}
+	:deep(.el-sub-menu__icon-arrow) {
+		left: var(--el-menu-base-level-padding);
+		right: auto;
+	}
+}
+</style>

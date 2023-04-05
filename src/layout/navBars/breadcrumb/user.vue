@@ -1,5 +1,5 @@
 <template>
-	<div class="layout-navbars-breadcrumb-user pr15" :style="{ flex: layoutUserFlexNum }">
+	<div class="layout-navbars-breadcrumb-user" :class="isUyghur ? 'is-uyghur' : 'pr15'" :style="{ flex: layoutUserFlexNum }">
 		<el-dropdown :show-timeout="70" :hide-timeout="50" trigger="click" @command="onComponentSizeChange">
 			<div class="layout-navbars-breadcrumb-user-icon">
 				<i class="iconfont icon-ziti" :title="$t('message.user.title0')"></i>
@@ -59,7 +59,7 @@
 			></i>
 		</div>
 		<el-dropdown :show-timeout="70" :hide-timeout="50" @command="onHandleCommandClick">
-			<span class="layout-navbars-breadcrumb-user-link">
+			<span class="layout-navbars-breadcrumb-user-link" :style="isUyghur ? 'flex-direction: row-reverse;' : ''">
 				<img :src="userInfos.photo" class="layout-navbars-breadcrumb-user-link-photo mr5" />
 				{{ userInfos.userName === '' ? 'common' : userInfos.userName }}
 				<el-icon class="el-icon--right">
@@ -68,7 +68,7 @@
 			</span>
 			<template #dropdown>
 				<el-dropdown-menu>
-					<el-dropdown-item command="/home">{{ $t('message.user.dropdown1') }}</el-dropdown-item>
+					<el-dropdown-item command="/home" class="is-uyghur">{{ $t('message.user.dropdown1') }}</el-dropdown-item>
 					<el-dropdown-item command="wareHouse">{{ $t('message.user.dropdown6') }}</el-dropdown-item>
 					<el-dropdown-item command="/personal">{{ $t('message.user.dropdown2') }}</el-dropdown-item>
 					<el-dropdown-item command="/404">{{ $t('message.user.dropdown3') }}</el-dropdown-item>
@@ -111,7 +111,7 @@ const state = reactive({
 	disabledI18n: 'zh-cn',
 	disabledSize: 'large',
 });
-
+const isUyghur = ref(false);
 // 设置分割样式
 const layoutUserFlexNum = computed(() => {
 	let num: string | number = '';
@@ -207,11 +207,13 @@ onMounted(() => {
 	if (Local.get('themeConfig')) {
 		initI18nOrSize('globalComponentSize', 'disabledSize');
 		initI18nOrSize('globalI18n', 'disabledI18n');
+		isUyghur.value = themeConfig.value.globalI18n === 'ug-cn';
 	}
 });
 </script>
 
 <style scoped lang="scss">
+
 .layout-navbars-breadcrumb-user {
 	display: flex;
 	align-items: center;
@@ -255,5 +257,22 @@ onMounted(() => {
 	:deep(.el-badge__content.is-fixed) {
 		top: 12px;
 	}
+}
+.is-uyghur {
+	display: flex;
+	flex-direction: row-reverse;
+	padding-left: 15px !important;
+	:deep(.mr5) {
+		margin-left: 5px !important;
+		margin-right: 0px;
+	};
+	:deep(.el-icon--right) {
+		margin-right: 5px;
+		margin-left: 0px;
+	};
+	:deep(.el-dropdown-menu__item) {
+		display: flex;
+		flex-direction: row-reverse;
+	};
 }
 </style>

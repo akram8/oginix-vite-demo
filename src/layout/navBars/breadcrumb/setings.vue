@@ -579,10 +579,11 @@ const onWartermarkTextInput = (val: string) => {
 };
 // 5、布局切换
 const onSetLayout = (layout: string) => {
-	Local.set('oldLayout', layout);
-	if (getThemeConfig.value.layout === layout) return false;
+	const newLayout = (locale.value !== 'ug-cn') ? layout : `r${{layout}}`
+	Local.set('oldLayout', newLayout);
+	if (getThemeConfig.value.layout === newLayout) return false;
 	if (layout === 'transverse') getThemeConfig.value.isCollapse = false;
-	getThemeConfig.value.layout = layout;
+	getThemeConfig.value.layout = newLayout;
 	getThemeConfig.value.isDrawer = false;
 	initLayoutChangeFun();
 };

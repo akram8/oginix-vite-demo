@@ -55,13 +55,32 @@ const getVersion = computed(() => {
 const getGlobalComponentSize = computed(() => {
 	return other.globalComponentSize();
 });
+// 获取布局配置信息
+const getThemeConfig = computed(() => {
+	return themeConfig.value;
+});
 // 语言切换需要更改字体和布局方式
 const setGlobalFontAndContiner = () => {
 	if (locale.value === 'ug-cn') { // 如果是Uyghur语言，则测替换全局字体样式
-		document.documentElement.style.setProperty(`--next-font-family`, 'ALKATIP Tor, SimSun, pingfang SC');
+		document.documentElement.style.setProperty(`--next-font-family`, 'ALKATIP UI, SimSun, pingfang SC');
+
+		// 布局切换
+		Local.set('oldLayout', 'rDefaults');
+		if (getThemeConfig.value.layout === 'rDefaults') return false;
+		// if (layout === 'transverse') getThemeConfig.value.isCollapse = false;
+		getThemeConfig.value.layout = 'rDefaults';
+		getThemeConfig.value.isDrawer = false;
 	} else {
 		document.documentElement.style.setProperty(`--next-font-family`, 'Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif');
+		// 布局切换
+		Local.set('oldLayout', 'defaults');
+		if (getThemeConfig.value.layout === 'defaults') return false;
+		// if (layout === 'transverse') getThemeConfig.value.isCollapse = false;
+		getThemeConfig.value.layout = 'defaults';
+		getThemeConfig.value.isDrawer = false;
 	}
+	
+	// initLayoutChangeFun();
 }
 // 获取全局 i18n
 const getGlobalI18n = computed(() => {
