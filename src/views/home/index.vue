@@ -16,7 +16,7 @@
 						<div class="flex-auto">
 							<span class="font30">{{ v.num1 }}</span>
 							<span class="ml5 font16" :style="{ color: v.color1 }">{{ v.num2 }}%</span>
-							<div class="mt10">{{ v.num3 }}</div>
+							<div class="mt10">{{ $t(v.num3) }}</div>
 						</div>
 						<div class="home-card-item-icon flex" :style="{ background: `var(${v.color2})` }">
 							<i class="flex-margin font32" :class="v.num4" :style="{ color: `var(${v.color3})` }"></i>
@@ -91,7 +91,8 @@ const state = reactive({
 		{
 			num1: '125,12',
 			num2: '-12.32',
-			num3: '订单统计信息',
+			// num3: '订单统计信息',
+			num3: 'message.statistics.titleOrder',
 			num4: 'fa fa-meetup',
 			color1: '#FF6462',
 			color2: '--next-color-primary-lighter',
@@ -100,7 +101,7 @@ const state = reactive({
 		{
 			num1: '653,33',
 			num2: '+42.32',
-			num3: '月度计划信息',
+			num3: 'message.statistics.titleMonth',
 			num4: 'iconfont icon-ditu',
 			color1: '#6690F9',
 			color2: '--next-color-success-lighter',
@@ -109,7 +110,7 @@ const state = reactive({
 		{
 			num1: '125,65',
 			num2: '+17.32',
-			num3: '年度计划信息',
+			num3: 'message.statistics.titleYear',
 			num4: 'iconfont icon-zaosheng',
 			color1: '#6690F9',
 			color2: '--next-color-warning-lighter',
@@ -118,7 +119,7 @@ const state = reactive({
 		{
 			num1: '520,43',
 			num2: '-10.01',
-			num3: '访问统计信息',
+			num3: 'message.statistics.titleAccess',
 			num4: 'fa fa-github-alt',
 			color1: '#FF6462',
 			color2: '--next-color-danger-lighter',
