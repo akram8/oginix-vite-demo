@@ -10,7 +10,7 @@ export default {
 	},
 	account: {
 		accountPlaceholder1: '用户名 admin 或不输均为 common',
-		accountPlaceholder2: '密码：123456',
+		accountPlaceholder2: 'مەخپى نۇمۇر: 123456',
 		accountPlaceholder3: 'دەلىلەش نۇمۇرىنى كىرگۈزۈڭ',
 		accountBtnText: 'كىرىش',
 	},
@@ -22,7 +22,7 @@ export default {
 		msgText: '* 温馨提示：建议使用谷歌、Microsoft Edge，版本 79.0.1072.62 及以上浏览器，360浏览器请使用极速模式',
 	},
 	scan: {
-		text: '打开手机扫一扫，快速登录/注册',
+		text: 'تېلفۇن ئارقىلىق سكاننېرلاپ كىرىڭ ياكى تىزىملىتىڭ',
 	},
 	signInText: '!قايتىپ كەلگىنىڭىزنى قارشى ئالىمىز',
 };
