@@ -70,6 +70,7 @@ export default {
 		visualizingLinkDemo1: '數據視覺化演示1',
 		visualizingLinkDemo2: '數據視覺化演示2',
 		personal: '個人中心',
+		chat: '聊天',
 		tools: '工具類集合',
 		layoutLinkView: '外鏈',
 		layoutIframeViewOne: '内嵌 iframe1',

@@ -1120,6 +1120,21 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 				},
 			},
 			{
+				path: '/chat',
+				name: 'chat',
+				component: () => import('/@/views/chat/index.vue'),
+				meta: {
+					title: 'message.router.chat',
+					isLink: '',
+					isHide: false,
+					isKeepAlive: true,
+					isAffix: false,
+					isIframe: false,
+					roles: ['admin', 'common'],
+					icon: 'ele-ChatDotSquare',
+				}
+			},
+			{
 				path: '/tools',
 				name: 'tools',
 				component: () => import('/@/views/tools/index.vue'),

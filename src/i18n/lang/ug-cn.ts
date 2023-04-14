@@ -70,6 +70,7 @@ export default {
 		visualizingLinkDemo1: 'سانلىق مەلۇماتلىق كۆرۈنمە 1',
 		visualizingLinkDemo2: 'سانلىق مەلۇماتلىق كۆرۈنمە 2',
 		personal: 'شەخسى مەركەز',
+		chat: 'پاراڭلىشىش',
 		tools: 'قورال تۈرى توپلىمى',
 		layoutLinkView: 'سىرتقى ئۇلانما',
 		layoutIframeViewOne: 'iframe1 ئىچىگە ئورنىتىلغان',

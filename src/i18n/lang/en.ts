@@ -70,6 +70,7 @@ export default {
 		visualizingLinkDemo1: 'visualizingLinkDemo1',
 		visualizingLinkDemo2: 'visualizingLinkDemo2',
 		personal: 'personal',
+		chat: 'chat',
 		tools: 'tools',
 		layoutLinkView: 'LinkView',
 		layoutIframeViewOne: 'IframeViewOne',
