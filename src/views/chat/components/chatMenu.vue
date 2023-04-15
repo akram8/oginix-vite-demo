@@ -7,6 +7,16 @@
         placeholder="搜索"
         :prefix-icon="Search"
       />
+      <el-dropdown trigger="click" placement="bottom-end">
+        <!-- <el-icon class="ele-CirclePlus"></el-icon> -->
+        <SvgIcon name="ele-CirclePlus" class="plusIocn"></SvgIcon>
+        <template #dropdown>
+          <el-dropdown-item>创建群组</el-dropdown-item>
+          <el-dropdown-item>添加外部联系人</el-dropdown-item>
+          <el-dropdown-item>创建文档</el-dropdown-item>
+          <el-dropdown-item>加入会议</el-dropdown-item>
+        </template>
+      </el-dropdown>
     </div>
     <div class="menu-panel" v-loading="state.loading">
       <!-- <div class="menu-item" v-for="item in state.userData" :key="item.id" @click="checkItemClick(item)"> -->
@@ -98,6 +108,16 @@ onMounted(() => {
   .search-panel {
     height: 42px;
     padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .plusIocn {
+      font-size: 20px !important;
+      :hover {
+        color: var(--el-color-primary);
+        cursor: pointer;
+      }
+    }
   }
   .menu-panel {
     flex: 1;
