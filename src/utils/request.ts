@@ -37,7 +37,6 @@ service.interceptors.response.use(
 		const res = response.data;
 		if (res.code && res.code !== 0 && res.code !== 200) {
 			// `token` 过期或者账号已在别处登录
-			// console.log('aaaaaaaaaaaa', res)
 			if (res.code === 401 || res.code === 4001) {
 				Session.clear(); // 清除浏览器全部临时缓存
 				window.location.href = '/'; // 去登录页

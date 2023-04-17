@@ -6,7 +6,7 @@ import request from "/@/utils/request";
 export function getUserList(data?: object) {
   return request({
       // url: '/meeting/userList',
-      url: 'http://yapi.smart-xwork.cn/mock/177849/api/meeting/userList',
+      url: 'https://yapi.smart-xwork.cn/mock/177849/api/meeting/userList',
       method: 'get',
       data
   })
@@ -18,7 +18,7 @@ export function getUserList(data?: object) {
 export function getChatMessage(data?: object) {
   return request({
       // url: '/meeting/chat/message',
-      url: 'http://yapi.smart-xwork.cn/mock/177849/api/meeting/chat/message',
+      url: 'https://yapi.smart-xwork.cn/mock/177849/api/meeting/chat/message',
       method: 'get',
       data
   })
