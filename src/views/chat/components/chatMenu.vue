@@ -40,7 +40,7 @@
 import { onMounted, reactive } from 'vue';
 import { Search } from '@element-plus/icons-vue'
 import { ALL_USER } from '../data/user';
-// import { getUserList } from '/@/api/chat';
+import { getUserList } from '/@/api/chat';
 // import emitter from '/@/utils/mitt';
 
 const state = reactive({
@@ -78,14 +78,14 @@ const getUserData = () => {
   state.loading = true;
   state.userData = ALL_USER.data;
   state.loading = false;
-  // getUserList().then((res: any) => {
-  //   if (res.code == 200) {
-  //     state.userData = res.data as any;
-  //   } else {
-  //     // console.log('error', res.msg)
-  //   }
-  //   state.loading = false;
-  // })
+  getUserList().then((res: any) => {
+    if (res.code == 200) {
+      state.userData = res.data as any;
+    } else {
+      // console.log('error', res.msg)
+    }
+    state.loading = false;
+  })
 }
 // 选择 用户 / 群组
 // const checkItemClick = (data: any) => {
