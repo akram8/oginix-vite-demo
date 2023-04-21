@@ -39,7 +39,7 @@
 <script setup lang="ts" name="chatMenu">
 import { onMounted, reactive } from 'vue';
 import { Search } from '@element-plus/icons-vue'
-import { ALL_USER } from '../data/user';
+// import { ALL_USER } from '../data/user';
 import { getUserList } from '/@/api/chat';
 // import emitter from '/@/utils/mitt';
 
@@ -76,14 +76,16 @@ const getFormatTime = (time: any) => {
 // 获取用户列表数据
 const getUserData = () => {
   state.loading = true;
-  state.userData = ALL_USER.data;
-  state.loading = false;
+  // state.userData = ALL_USER.data;
+  // state.loading = false;
   getUserList().then((res: any) => {
     if (res.code == 200) {
       state.userData = res.data as any;
     } else {
       // console.log('error', res.msg)
     }
+    state.loading = false;
+  }).finally(() => {
     state.loading = false;
   })
 }
@@ -120,7 +122,8 @@ onMounted(() => {
     }
   }
   .menu-panel {
-    flex: 1;
+    height: 500px;
+    // flex: 1;
     // display: flex;
     // flex-direction: column;
     overflow: auto;
