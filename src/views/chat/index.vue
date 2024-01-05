@@ -7,7 +7,7 @@
       <el-main class="main">Main</el-main>
     </el-container> -->
     <splitpanes class="default-theme" style="height: 100%; width: 100%;">
-      <pane min-size="15" max-size="30" size="15px">
+      <pane min-size="20" max-size="40" size="20px">
         <ChatMenu />
       </pane>
       <pane>

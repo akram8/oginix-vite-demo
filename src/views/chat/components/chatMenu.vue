@@ -5,6 +5,7 @@
         v-model="state.search"
         class="w-50 m-2"
         placeholder="搜索"
+        clearable
         :prefix-icon="Search"
       />
       <el-dropdown trigger="click" placement="bottom-end">
@@ -20,7 +21,7 @@
     </div>
     <div class="menu-panel" v-loading="state.loading">
       <!-- <div class="menu-item" v-for="item in state.userData" :key="item.id" @click="checkItemClick(item)"> -->
-      <div class="menu-item" v-for="item in state.userData" :key="item.id">
+      <div class="menu-item" v-for="item in state.filterData" :key="item.id">
         <div class="item-avatar">
           <img v-if="item.avatar.length > 0" :src="item.avatar" />
           <span v-else>{{ item.name.substring(0, 2) }}</span>
@@ -37,14 +38,16 @@
 </template>
 
 <script setup lang="ts" name="chatMenu">
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, computed } from 'vue';
 import { Search } from '@element-plus/icons-vue'
+import { match } from 'pinyin-pro';
 // import { ALL_USER } from '../data/user';
 import { getUserList } from '/@/api/chat';
 // import emitter from '/@/utils/mitt';
 
 const state = reactive({
   userData: <any>[],
+  filterData: <any>[],
   search: '',
   loading: false
 });
@@ -93,6 +96,19 @@ const getUserData = () => {
 // const checkItemClick = (data: any) => {
 //   emitter.emit('changeCurrentUserData', data);
 // }
+
+// 列表数据
+state.filterData = computed(() => {
+  if (!state.search) {
+    return state.userData;
+  }
+  // 根据文本输入框做模糊搜索
+  return state.userData.filter((item: any) => { 
+    // 【中文，拼音】匹配【中文】 
+    // pinyin-pro 在线文档： https://pinyin-pro.cn/use/match.html#%E6%98%AF%E5%90%A6%E8%BF%9E%E7%BB%AD
+    return item.name.includes(state.search) || match(item.name, state.search, { continuous: true })
+  });
+})
 
 onMounted(() => {
   getUserData();
