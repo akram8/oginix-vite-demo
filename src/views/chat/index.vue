@@ -11,7 +11,15 @@
         <ChatMenu />
       </pane>
       <pane>
-        <span>22222</span>
+        <div class="chat-top">
+          【XXX】的聊天记录
+        </div>
+        <div class="chat-main">
+          <!-- <ChatItem /> -->
+        </div>
+        <div class="chat-footer">
+          <ChatSendPanel />
+        </div>
       </pane>
     </splitpanes>
   </div>
@@ -24,6 +32,8 @@ import 'splitpanes/dist/splitpanes.css';
 
 // 组件引入
 const ChatMenu = defineAsyncComponent(() => import('./components/chatMenu.vue'));
+// const ChatItem = defineAsyncComponent(() => import('./components/chatItem.vue'));
+const ChatSendPanel = defineAsyncComponent(() => import('./components/chatSendPanel.vue'));
 </script>
 
 <style lang="scss" scoped>
